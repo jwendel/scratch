@@ -1,0 +1,34 @@
+{{block "index" .}}
+    <html>
+    <head>
+        <script src="https://unpkg.com/htmx.org@1.9.12/dist/htmx.js" integrity="sha384-qbtR4rS9RrUMECUWDWM2+YGgN3U4V4ZncZ0BvUcg9FGct0jqXz3PUdVpU1p0yrXS" crossorigin="anonymous"></script>
+    </head>
+    <body>
+
+    <input hx-get="/dostuff"
+           hx-target="#updateme"
+           hx-swap="outerHTML"
+           type="radio"
+           id="blue"
+           name="drone"
+           value="blue"/>
+    <label for="huey">blue</label>
+    <input hx-get="/dostuff"
+           hx-target="#updateme"
+           hx-swap="outerHTML"
+           type="radio"
+           id="green"
+           name="drone"
+           value="green"/>
+    <label for="dewey">green</label>
+    <input hx-get="/dostuff" hx-target="#updateme" hx-swap="outerHTML" type="radio" id="red" name="drone" value="red"/>
+    <label for="red">green</label>
+
+    <div id="updateme">content here</div>
+    </body>
+    </html>
+{{ end }}
+
+{{block "dostuff" .}}
+    <div id="updateme">response! {{.}}</div>
+{{end}}
